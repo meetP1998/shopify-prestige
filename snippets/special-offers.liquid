@@ -19,11 +19,12 @@ Please add following code in theme.liquid almost at the end, BEFORE the line {% 
 
 {% endcomment %}
 
-
+{% comment %}
 <script data-cfasync="false" data-no-instant>window.jQuery ||
   document.write("<script src='https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'>\x3C/script>")
 </script>
-
+{% endcomment %}
+{{ 'jquery.min.js' | asset_url | script_tag }}
 
 <script type="text/javascript">
   {% assign saso_page_type = '' %}
