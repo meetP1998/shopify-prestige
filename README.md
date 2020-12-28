@@ -1,0 +1,1 @@
+# Shopify Prestige Theme speedup
