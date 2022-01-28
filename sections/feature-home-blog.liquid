@@ -1,0 +1,25 @@
+<section>
+    <div class="header">
+        {{ section.settings.title }}
+    </div>
+</section>
+
+{% schema %}
+{
+  "name": "Home Blogs",
+  "settings": [
+    {
+        "type":"text",
+        "id":"title",
+        "label":"Title"
+    }
+  ],
+  "presets": [
+    {
+      "category": "Feature Blogs",
+      "name": "Feature Blogs",
+      "settings": {}
+    }
+  ]
+}
+{% endschema %}
