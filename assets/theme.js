@@ -1856,8 +1856,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.delegateElement = new domDelegate.Delegate(this.element);
       this.options = options;
 
-      var jsonData = JSON.parse(this.element.querySelector('[data-product-json]').innerHTML);
-
+      if(this.element.querySelector('[data-product-json]')) {
+      	var jsonData = JSON.parse(this.element.querySelector('[data-product-json]').innerHTML);
+      }
       this.productData = jsonData['product'];
       this.variantsInventories = jsonData['inventories'] || {};
       this.masterSelector = this.element.querySelector('#product-select-' + this.productData['id']);
@@ -2260,7 +2261,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }]);
 
-//     return ProductVariants;
+    return ProductVariants;
   }();
   /* harmony export (immutable) */
 
