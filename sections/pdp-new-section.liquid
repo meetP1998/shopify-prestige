@@ -83,12 +83,7 @@
 
 <section class="Product_main" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
  <div class="Product__Slideshow ">
-         
-   {% for media in product.media %}
-   <div class="Product__SlideItem Product__SlideItem--image">
-    <img class="Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" data-expand="-100" alt="{{ media.alt | escape }}" data-max-width="{{ media.width }}" data-max-height="{{ media.height }}" data-original-src="{{ media | img_url: 'master' }}">
-   </div>
-   {% endfor %}
+          {{ slideshow_media }}
         </div>
 </section>
 
