@@ -2496,6 +2496,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_initPhotoSwipeFromImageClick',
       value: function _initPhotoSwipeFromImageClick(event, target) {
         // Opening this way is only available on desktop
+        console.log('image_clicked')
         if (__WEBPACK_IMPORTED_MODULE_2__helper_Responsive__["default"].matchesBreakpoint('pocket')) {
           return;
         }
