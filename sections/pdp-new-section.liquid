@@ -83,7 +83,10 @@
 
 <section class="Product_main" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
  <div class="Product__Slideshow ">
-          {{ slideshow_media }}
+         
+   {% for media in product.media %}
+   	<img src="{{ media | img_url }}">
+   {% endfor %}
         </div>
 </section>
 
