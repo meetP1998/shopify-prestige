@@ -2447,7 +2447,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, ProductImageZoom);
 
       this.element = element;
-      console.log(this.element);
       this.delegateElement = new domDelegate.Delegate(this.element);
       this.delegateRoot = new domDelegate.Delegate(document.body);
 
@@ -2478,7 +2477,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_initPhotoSwipe',
       value: function _initPhotoSwipe() {
         var images = [];
-		console.log("gtgtg");
+
         this.slideshow.flickityInstance.cells.forEach(function (item) {
           if (item.element.classList.contains('Product__SlideItem--image')) {
             images.push(item.element.querySelector('img'));
@@ -2496,7 +2495,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_initPhotoSwipeFromImageClick',
       value: function _initPhotoSwipeFromImageClick(event, target) {
         // Opening this way is only available on desktop
-        console.log('image_clicked')
         if (__WEBPACK_IMPORTED_MODULE_2__helper_Responsive__["default"].matchesBreakpoint('pocket')) {
           return;
         }
@@ -6268,9 +6266,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       this.viewInSpaceElement = this.element.querySelector('[data-shopify-xr]');
 
-//       if (this.options['templateSuffix'] !== 'coming-soon') {
-//         this.productVariants = new __WEBPACK_IMPORTED_MODULE_2__components_ProductVariants__["default"](container, this.options);
-//       }
+      if (this.options['templateSuffix'] !== 'coming-soon') {
+        this.productVariants = new __WEBPACK_IMPORTED_MODULE_2__components_ProductVariants__["default"](container, this.options);
+      }
 
       this.productReviews = new __WEBPACK_IMPORTED_MODULE_4__components_ProductReviews__["default"](container);
 
@@ -6313,11 +6311,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.productGalleryElement = this.element.querySelector('.Product__Gallery');
       this.quickNav = this.element.querySelector('.Product__QuickNav');
 
-//       if (this.options['enableImageZoom']) {
-//         this.imageZoomInstance = new __WEBPACK_IMPORTED_MODULE_3__components_ProductImageZoom__["default"](this.element, this.productSlideshow);
-//       }
+      if (this.options['enableImageZoom']) {
+        this.imageZoomInstance = new __WEBPACK_IMPORTED_MODULE_3__components_ProductImageZoom__["default"](this.element, this.productSlideshow);
+      }
 
-//       Stickyfill.addOne(this.productInfoElement);
+      Stickyfill.addOne(this.productInfoElement);
 
       // We have to re-order elements in the DOM
       var offscreenElement = this.element.querySelector('.Product__OffScreen');
@@ -6730,40 +6728,40 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }
 
-//           var productInfoStyles = window.getComputedStyle(this.productInfoElement),
-//               productInfoPadding = parseInt(productInfoStyles.paddingTop) + parseInt(productInfoStyles.paddingBottom),
-//               productGalleryHeight = this.productGalleryElement ? parseInt(this.productGalleryElement.scrollHeight) : 0;
+          var productInfoStyles = window.getComputedStyle(this.productInfoElement),
+              productInfoPadding = parseInt(productInfoStyles.paddingTop) + parseInt(productInfoStyles.paddingBottom),
+              productGalleryHeight = this.productGalleryElement ? parseInt(this.productGalleryElement.scrollHeight) : 0;
 
-//           // 2nd: making sure to set up enough space in aside part
-//           var calculateMinHeight = function calculateMinHeight() {
-//             if (_this60.productAsideElement) {
-//               _this60.productAsideElement.style.minHeight = _this60.productInfoElement.scrollHeight - productInfoPadding - productGalleryHeight + 'px';
-//               _this60.productInfoElement.closest('.Product__InfoWrapper').style.maxHeight = _this60.productAsideElement.offsetTop + _this60.productInfoElement.scrollHeight - productInfoPadding + 'px';
-//             } else {
-//               _this60.productWrapperElement.style.minHeight = _this60.productInfoElement.scrollHeight - parseInt(productInfoStyles.paddingTop) + 'px';
-//             }
-//           };
+          // 2nd: making sure to set up enough space in aside part
+          var calculateMinHeight = function calculateMinHeight() {
+            if (_this60.productAsideElement) {
+              _this60.productAsideElement.style.minHeight = _this60.productInfoElement.scrollHeight - productInfoPadding - productGalleryHeight + 'px';
+              _this60.productInfoElement.closest('.Product__InfoWrapper').style.maxHeight = _this60.productAsideElement.offsetTop + _this60.productInfoElement.scrollHeight - productInfoPadding + 'px';
+            } else {
+              _this60.productWrapperElement.style.minHeight = _this60.productInfoElement.scrollHeight - parseInt(productInfoStyles.paddingTop) + 'px';
+            }
+          };
 
-//           calculateMinHeight();
+          calculateMinHeight();
 
           // This code actually works well, but if a merchant is using an app that dynamically adds content (such as ReCharge or any other widget-based app), this
           // will mess the min height. There is a clean solution to this issue, which is by using ResizeObserver. However it's only supported in Chrome for now,
           // but I feel it's already good to have a clean fix
-//           if (window.ResizeObserver) {
-//             this.productInfoResizeObserver = new ResizeObserver(function () {
-//               calculateMinHeight(); // We currently do not take advantage of the values returned by the observer as our calculation depends on other values
-//             });
+          if (window.ResizeObserver) {
+            this.productInfoResizeObserver = new ResizeObserver(function () {
+              calculateMinHeight(); // We currently do not take advantage of the values returned by the observer as our calculation depends on other values
+            });
 
-//             this.productInfoResizeObserver.observe(this.productInfoElement);
-//           }
+            this.productInfoResizeObserver.observe(this.productInfoElement);
+          }
 
-//           // 3rd: let's handle the scroll for the product info
-//           this.productInfoScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.productInfoElement);
+          // 3rd: let's handle the scroll for the product info
+          this.productInfoScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.productInfoElement);
 
-//           // 4th: let's handle the scroll for the thumbnails
-//           if (this.options['showThumbnails'] && this.slideshowNavThumbnails) {
-//             this.productThumbnailsScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.slideshowNavThumbnails);
-//           }
+          // 4th: let's handle the scroll for the thumbnails
+          if (this.options['showThumbnails'] && this.slideshowNavThumbnails) {
+            this.productThumbnailsScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.slideshowNavThumbnails);
+          }
         }
       }
     }]);
