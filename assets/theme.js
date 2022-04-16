@@ -2447,6 +2447,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, ProductImageZoom);
 
       this.element = element;
+      console.log(this.element);
       this.delegateElement = new domDelegate.Delegate(this.element);
       this.delegateRoot = new domDelegate.Delegate(document.body);
 
