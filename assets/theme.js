@@ -6712,7 +6712,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           if (this.productAsideElement) {
             this.productAsideElement.style.minHeight = null;
           } else {
+            if(this.productWrapperElement) {
             this.productWrapperElement.style.minHeight = null;
+            }
           }
 
           this.productInfoElement.parentNode.style.maxHeight = null;
