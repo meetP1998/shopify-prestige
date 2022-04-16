@@ -2478,7 +2478,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       key: '_initPhotoSwipe',
       value: function _initPhotoSwipe() {
         var images = [];
-
+		console.log("gtgtg");
         this.slideshow.flickityInstance.cells.forEach(function (item) {
           if (item.element.classList.contains('Product__SlideItem--image')) {
             images.push(item.element.querySelector('img'));
