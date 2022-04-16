@@ -6317,8 +6317,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           this.slideshowNavThumbnailsItems = this.slideshowNavThumbnails ? __WEBPACK_IMPORTED_MODULE_7__helper_Dom__["default"].nodeListToArray(this.slideshowNavThumbnails.querySelectorAll('.Product__SlideshowNavImage')) : [];
         }
 
+        if(!this.element.classList.contains('Product_main')) {
         this.slideshowImages = __WEBPACK_IMPORTED_MODULE_7__helper_Dom__["default"].nodeListToArray(productSlideshowElement.querySelectorAll('.Carousel__Cell'));
-
+        }
         // Setup the mobile nav
         this._setupSlideshowMobileNav();
       }
