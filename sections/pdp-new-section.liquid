@@ -1,22 +1,90 @@
 {%- capture section_settings -%}
 {
-  "enableHistoryState": true,
-  "templateSuffix": {{ product.template_suffix | json }},
-  "showInventoryQuantity": {{ section.settings.show_inventory_quantity | json }},
-  "showSku": {{ section.settings.show_sku | json }},
-  "stackProductImages": {{ section.settings.stack_images | json }},
-  "showThumbnails": {{ section.settings.show_thumbnails | json }},
-  "enableVideoLooping": {{ section.settings.enable_video_looping | json }},
-  "inventoryQuantityThreshold": {{ section.settings.inventory_quantity_threshold }},
-  "showPriceInButton": {{ section.settings.show_price_in_button | json }},
-  "enableImageZoom": {{ section.settings.enable_image_zoom | json }},
-  "showPaymentButton": {{ section.settings.show_payment_button | json }},
-  "useAjaxCart": {% if settings.cart_type == 'drawer' %}true{% else %}false{% endif %}
+"enableHistoryState": true,
+"templateSuffix": {{ product.template_suffix | json }},
+"showInventoryQuantity": {{ section.settings.show_inventory_quantity | json }},
+"showSku": {{ section.settings.show_sku | json }},
+"stackProductImages": {{ section.settings.stack_images | json }},
+"showThumbnails": {{ section.settings.show_thumbnails | json }},
+"enableVideoLooping": {{ section.settings.enable_video_looping | json }},
+"inventoryQuantityThreshold": {{ section.settings.inventory_quantity_threshold }},
+"showPriceInButton": {{ section.settings.show_price_in_button | json }},
+"enableImageZoom": {{ section.settings.enable_image_zoom | json }},
+"showPaymentButton": {{ section.settings.show_payment_button | json }},
+"useAjaxCart": {% if settings.cart_type == 'drawer' %}true{% else %}false{% endif %}
 }
 {%- endcapture -%}
 
+{%- assign initial_media_id = product.featured_media.id -%}
+{%- assign initial_media_index = 0 -%}
+{%- assign media_count = 0 -%}
+
+{%- capture slideshow_media -%}
+{%- for media in product.media -%}
+{%- if media.alt == 'featured' or media.alt == 'featured mobile' -%}
+{%- continue -%}
+{%- endif -%}
+
+{%- if product.selected_variant and media.id == product.selected_variant.featured_media.id -%}
+{%- assign initial_media_index = media_count -%}
+{%- assign initial_media_id = media.id -%}
+{%- endif -%}
+
+{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,400,600,700,800,900,1000,1200,1400,1600', image: media -%}{%- endcapture -%}
+
+{%- case media.media_type -%}
+{%- when 'image' -%}
+<div id="Media{{ media.id }}" tabindex="0" class="Product__SlideItem Product__SlideItem--image Carousel__Cell {% if initial_media_id == media.id %}is-selected{% endif %}" data-media-type="image" data-media-id="{{ media.id }}" data-media-position="{{ media.position }}" data-image-media-position="{% increment image_position %}">
+  <div class="AspectRatio AspectRatio--withFallback" style="padding-bottom: {{ 100.0 | divided_by: media.aspect_ratio }}%; --aspect-ratio: {{ media.aspect_ratio }};">
+    {% assign image_url = media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' %}
+
+    <img class="Image--lazyLoad Image--fadeIn" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" data-expand="-100" alt="{{ media.alt | escape }}" data-max-width="{{ media.width }}" data-max-height="{{ media.height }}" data-original-src="{{ media | img_url: 'master' }}">
+    <span class="Image__Loader"></span>
+
+    <noscript>
+      <img alt="{{ media.alt | escape }}" src="{{ media | img_url: '800x' }}"/>
+    </noscript>
+  </div>
+</div>
+
+{%- when 'external_video' -%}
+<div id="Media{{ media.id }}" tabindex="-1" class="Product__SlideItem Product__SlideItem--video Carousel__Cell {% if initial_media_id == media.id %}is-selected{% endif %}" data-media-type="external_video" data-media-id="{{ media.id }}" data-media-position="{{ media.position }}" data-video-host="{{ media.host | escape }}" data-video-id="{{ media.external_id | escape }}">
+  <div class="Image--lazyLoad Image--fadeIn" data-expand="-100">
+    <div class="VideoWrapper">
+      {{- media | external_video_tag: image_size: '1024x' -}}
+    </div>
+  </div>
+</div>
+
+{%- when 'video' -%}
+<div id="Media{{ media.id }}" tabindex="-1" class="Product__SlideItem Product__SlideItem--video Carousel__Cell {% if initial_media_id == media.id %}is-selected{% endif %}" data-media-type="video" data-media-id="{{ media.id }}" data-media-position="{{ media.position }}">
+  <div class="Image--lazyLoad Image--fadeIn" data-expand="-100">
+    <div class="VideoWrapper VideoWrapper--native" style="padding-bottom: {{ 100.0 | divided_by: media.aspect_ratio }}%">
+      {{- media | video_tag: image_size: '1024x', controls: true -}}
+    </div>
+  </div>
+</div>
+
+{%- when 'model' -%}
+<div id="Media{{ media.id }}" tabindex="-1" class="Product__SlideItem Product__SlideItem--model Carousel__Cell {% if initial_media_id == media.id %}is-selected{% endif %}" data-media-type="model" data-media-id="{{ media.id }}" data-media-position="{{ media.position }}">
+  <div class="Image--lazyLoad Image--fadeIn" data-expand="-100">
+    <div class="ModelWrapper">
+      {{- media | model_viewer_tag: image_size: '1024x', reveal: 'interaction', toggleable: true -}}
+    </div>
+  </div>
+</div>
+{%- endcase -%}
+
+{%- assign media_count = media_count | plus: 1 -%}
+{%- endfor -%}
+{%- endcapture -%}
+
+
 
 <section class="Product_main" data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}'>
+ <div class="Product__Slideshow {% if section.settings.enable_image_zoom %}Product__Slideshow--zoomable{% endif %} Carousel" data-flickity-config='{{ flickity_options }}'>
+          {{ slideshow_media }}
+        </div>
 </section>
 
   <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
