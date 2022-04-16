@@ -6717,7 +6717,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             }
           }
 
+          if(this.productInfoElement) {
           this.productInfoElement.parentNode.style.maxHeight = null;
+          }
         } else {
           // 1st: scrollspy for the dots and image
           if (this.slideshowImages && this.slideshowImages.length > 1) {
