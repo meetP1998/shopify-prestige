@@ -2260,7 +2260,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       }
     }]);
 
-    return ProductVariants;
+//     return ProductVariants;
   }();
   /* harmony export (immutable) */
 
