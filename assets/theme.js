@@ -458,9 +458,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
       }
 
-      /**
-       * Flickity is a CSS driven library and hence it is hard to setup some stuff in pure JS
-//        */this.initialConfig
+    
+//        * Flickity is a CSS driven library and hence it is hard to setup some stuff in pure JS
+       
 
     }, {
       key: '_processConfig',
