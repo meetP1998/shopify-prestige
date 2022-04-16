@@ -311,8 +311,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       _classCallCheck(this, Carousel);
 
       this.element = element;
+      if(element.getAttribute('data-flickity-config')) {
       this.initialConfig = Object.assign(JSON.parse(element.getAttribute('data-flickity-config')), overrideSettings);
-      this.options = options;
+      }
+        this.options = options;
 
       this._attachListeners();
       this._build();
