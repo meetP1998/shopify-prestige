@@ -1858,9 +1858,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       if(this.element.querySelector('[data-product-json]')) {
       	var jsonData = JSON.parse(this.element.querySelector('[data-product-json]').innerHTML);
-      }
+    
       this.productData = jsonData['product'];
       this.variantsInventories = jsonData['inventories'] || {};
+      }
       this.masterSelector = this.element.querySelector('#product-select-' + this.productData['id']);
 
       // We init value with the first selected variant
