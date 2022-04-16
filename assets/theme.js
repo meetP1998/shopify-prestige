@@ -2515,6 +2515,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         if (__WEBPACK_IMPORTED_MODULE_2__helper_Responsive__["default"].matchesBreakpoint('pocket')) {
           return;
         }
+        console.log('image clicked')
 
         var images = __WEBPACK_IMPORTED_MODULE_0__helper_Dom__["default"].nodeListToArray(this.element.querySelectorAll('.Product__SlideItem--image img'));
 
