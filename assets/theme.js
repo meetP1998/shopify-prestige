@@ -386,9 +386,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     }, {
       key: '_attachListeners',
       value: function _attachListeners() {
-        if (this.initialConfig['breakpoints'] !== undefined) {
-          this._onBreakpointChangedListener = this._onBreakpointChanged.bind(this);
-          document.addEventListener('breakpoint:changed', this._onBreakpointChangedListener);
+        if(this.initialConfig) {
+          if (this.initialConfig['breakpoints'] !== undefined) {
+            this._onBreakpointChangedListener = this._onBreakpointChanged.bind(this);
+            document.addEventListener('breakpoint:changed', this._onBreakpointChangedListener);
+          }
         }
       }
 
