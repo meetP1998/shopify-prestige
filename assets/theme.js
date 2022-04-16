@@ -469,8 +469,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
         delete config['breakpoints'];
 
-        if (this.initialConfig['breakpoints'] === undefined) {
-          return config; // No change, we simply return the config as it is
+        if(this.initialConfig) {
+          if (this.initialConfig['breakpoints'] === undefined) {
+            return config; // No change, we simply return the config as it is
+        }
         }
 
         var breakpoints = this.initialConfig['breakpoints'];
