@@ -1861,9 +1861,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
     
       this.productData = jsonData['product'];
       this.variantsInventories = jsonData['inventories'] || {};
-      }
+    
       this.masterSelector = this.element.querySelector('#product-select-' + this.productData['id']);
 
+        
       // We init value with the first selected variant
       this.productData['variants'].forEach(function (variant) {
         if (variant['id'] === jsonData['selected_variant_id']) {
@@ -1873,6 +1874,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           _this5.option3 = variant['option3'];
         }
       });
+      }
 
       this._attachListeners();
       this._createSelectors();
