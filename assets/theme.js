@@ -325,8 +325,10 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       value: function destroy() {
         this.flickityInstance.destroy();
 
-        if (this.initialConfig['breakpoints'] !== undefined) {
-          document.removeEventListener('breakpoint:changed', this._onBreakpointChangedListener);
+        if(this.initialConfig) {
+          if (this.initialConfig['breakpoints'] !== undefined) {
+            document.removeEventListener('breakpoint:changed', this._onBreakpointChangedListener);
+          }
         }
       }
     }, {
