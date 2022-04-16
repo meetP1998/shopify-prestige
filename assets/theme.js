@@ -6313,9 +6313,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       this.productGalleryElement = this.element.querySelector('.Product__Gallery');
       this.quickNav = this.element.querySelector('.Product__QuickNav');
 
-      if (this.options['enableImageZoom']) {
-        this.imageZoomInstance = new __WEBPACK_IMPORTED_MODULE_3__components_ProductImageZoom__["default"](this.element, this.productSlideshow);
-      }
+//       if (this.options['enableImageZoom']) {
+//         this.imageZoomInstance = new __WEBPACK_IMPORTED_MODULE_3__components_ProductImageZoom__["default"](this.element, this.productSlideshow);
+//       }
 
       Stickyfill.addOne(this.productInfoElement);
 
