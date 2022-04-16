@@ -6318,9 +6318,11 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
       if (this.options['enableImageZoom']) {
         this.imageZoomInstance = new __WEBPACK_IMPORTED_MODULE_3__components_ProductImageZoom__["default"](this.element, this.productSlideshow);
       }
-
-      Stickyfill.addOne(this.productInfoElement);
-
+      
+      
+      if( this.productInfoElement) {
+        Stickyfill.addOne(this.productInfoElement);
+      }
       // We have to re-order elements in the DOM
       var offscreenElement = this.element.querySelector('.Product__OffScreen');
 
