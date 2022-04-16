@@ -6268,9 +6268,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       this.viewInSpaceElement = this.element.querySelector('[data-shopify-xr]');
 
-      if (this.options['templateSuffix'] !== 'coming-soon') {
-        this.productVariants = new __WEBPACK_IMPORTED_MODULE_2__components_ProductVariants__["default"](container, this.options);
-      }
+//       if (this.options['templateSuffix'] !== 'coming-soon') {
+//         this.productVariants = new __WEBPACK_IMPORTED_MODULE_2__components_ProductVariants__["default"](container, this.options);
+//       }
 
       this.productReviews = new __WEBPACK_IMPORTED_MODULE_4__components_ProductReviews__["default"](container);
 
