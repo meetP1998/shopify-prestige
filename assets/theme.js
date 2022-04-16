@@ -6749,21 +6749,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
           // This code actually works well, but if a merchant is using an app that dynamically adds content (such as ReCharge or any other widget-based app), this
           // will mess the min height. There is a clean solution to this issue, which is by using ResizeObserver. However it's only supported in Chrome for now,
           // but I feel it's already good to have a clean fix
-          if (window.ResizeObserver) {
-            this.productInfoResizeObserver = new ResizeObserver(function () {
-              calculateMinHeight(); // We currently do not take advantage of the values returned by the observer as our calculation depends on other values
-            });
+//           if (window.ResizeObserver) {
+//             this.productInfoResizeObserver = new ResizeObserver(function () {
+//               calculateMinHeight(); // We currently do not take advantage of the values returned by the observer as our calculation depends on other values
+//             });
 
-            this.productInfoResizeObserver.observe(this.productInfoElement);
-          }
+//             this.productInfoResizeObserver.observe(this.productInfoElement);
+//           }
 
-          // 3rd: let's handle the scroll for the product info
-          this.productInfoScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.productInfoElement);
+//           // 3rd: let's handle the scroll for the product info
+//           this.productInfoScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.productInfoElement);
 
-          // 4th: let's handle the scroll for the thumbnails
-          if (this.options['showThumbnails'] && this.slideshowNavThumbnails) {
-            this.productThumbnailsScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.slideshowNavThumbnails);
-          }
+//           // 4th: let's handle the scroll for the thumbnails
+//           if (this.options['showThumbnails'] && this.slideshowNavThumbnails) {
+//             this.productThumbnailsScroller = new __WEBPACK_IMPORTED_MODULE_8__components_OverflowScroller__["default"](this.slideshowNavThumbnails);
+//           }
         }
       }
     }]);
