@@ -460,7 +460,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
       /**
        * Flickity is a CSS driven library and hence it is hard to setup some stuff in pure JS
-       */
+       */this.initialConfig
 
     }, {
       key: '_processConfig',
@@ -475,13 +475,17 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
         }
         }
 
-        var breakpoints = this.initialConfig['breakpoints'];
-
+        if(this.initialConfig) {
+          var breakpoints = this.initialConfig['breakpoints'];
+      
+        
         breakpoints.forEach(function (breakpoint) {
           if (__WEBPACK_IMPORTED_MODULE_0__helper_Responsive__["default"].matchesBreakpoint(breakpoint['matches'])) {
             config = Object.assign(config, breakpoint['settings']);
           }
         });
+          
+        }
 
         return config;
       }
