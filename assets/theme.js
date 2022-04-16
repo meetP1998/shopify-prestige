@@ -6730,21 +6730,21 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
             });
           }
 
-          var productInfoStyles = window.getComputedStyle(this.productInfoElement),
-              productInfoPadding = parseInt(productInfoStyles.paddingTop) + parseInt(productInfoStyles.paddingBottom),
-              productGalleryHeight = this.productGalleryElement ? parseInt(this.productGalleryElement.scrollHeight) : 0;
+//           var productInfoStyles = window.getComputedStyle(this.productInfoElement),
+//               productInfoPadding = parseInt(productInfoStyles.paddingTop) + parseInt(productInfoStyles.paddingBottom),
+//               productGalleryHeight = this.productGalleryElement ? parseInt(this.productGalleryElement.scrollHeight) : 0;
 
-          // 2nd: making sure to set up enough space in aside part
-          var calculateMinHeight = function calculateMinHeight() {
-            if (_this60.productAsideElement) {
-              _this60.productAsideElement.style.minHeight = _this60.productInfoElement.scrollHeight - productInfoPadding - productGalleryHeight + 'px';
-              _this60.productInfoElement.closest('.Product__InfoWrapper').style.maxHeight = _this60.productAsideElement.offsetTop + _this60.productInfoElement.scrollHeight - productInfoPadding + 'px';
-            } else {
-              _this60.productWrapperElement.style.minHeight = _this60.productInfoElement.scrollHeight - parseInt(productInfoStyles.paddingTop) + 'px';
-            }
-          };
+//           // 2nd: making sure to set up enough space in aside part
+//           var calculateMinHeight = function calculateMinHeight() {
+//             if (_this60.productAsideElement) {
+//               _this60.productAsideElement.style.minHeight = _this60.productInfoElement.scrollHeight - productInfoPadding - productGalleryHeight + 'px';
+//               _this60.productInfoElement.closest('.Product__InfoWrapper').style.maxHeight = _this60.productAsideElement.offsetTop + _this60.productInfoElement.scrollHeight - productInfoPadding + 'px';
+//             } else {
+//               _this60.productWrapperElement.style.minHeight = _this60.productInfoElement.scrollHeight - parseInt(productInfoStyles.paddingTop) + 'px';
+//             }
+//           };
 
-          calculateMinHeight();
+//           calculateMinHeight();
 
           // This code actually works well, but if a merchant is using an app that dynamically adds content (such as ReCharge or any other widget-based app), this
           // will mess the min height. There is a clean solution to this issue, which is by using ResizeObserver. However it's only supported in Chrome for now,
