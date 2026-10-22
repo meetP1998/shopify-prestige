@@ -18,7 +18,7 @@
   Spurit.Discountmanager.snippet.appDataFile = '{{"dmr.js" | asset_url }}';
 
   {% if collection %}
-      {% paginate collection.products %}
+      {% paginate collection.products by nil %}
           {% for product in collection.products %}
               Spurit.Discountmanager.snippet.products['{{product.handle}}'] = {{product.id}};
           {% endfor %}
@@ -35,3 +35,13 @@
       <link href="https://amaicdn.com/discountmanager/common.css" rel="stylesheet" type="text/css" media="all">
       {% endif %}
 {% endif %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% paginate collection.products %}"
+  to: "{% paginate collection.products by nil %}"
+  position: 516..557
+{% endcomment %}
